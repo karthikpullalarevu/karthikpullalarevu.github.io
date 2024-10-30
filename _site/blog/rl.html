@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  
+    <!-- code for nav bar -->
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+          <a class="navbar-brand" href="http://localhost:4000">Sai Aneesh Suryadevara</a>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:4000">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:4000/blog">Notes</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+
+    <title>Sai Aneesh Suryadevara</title>
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+  <meta name="author" content="Sai Aneesh Suryadevara" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="shortcut icon" type="images/png" href="images/favicon.png">
+  <link rel="canonical" href="http://localhost:4000/blog/rl">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+  <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+  
+</head>
+<body><!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Reinforcement Learning</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <!-- Additional head elements -->
+</head>
+
+<body>
+  <header class="post-header">
+    <h1 class="post-title">Introduction to Reinforcement Learning</h1>
+    <!-- You can include the author and publish date here if you like -->
+  </header>
+
+  <nav>
+    <!-- Navigation links -->
+  </nav>
+
+  <main class="post-content">
+    <script type="text/javascript" id="MathJax-script" defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+<p>Reinforcement Learning (RL) is essentially learning from experiences. The basic premise of Reinforcement Learning is that we have an <strong>Agent</strong>, that performs actions in an <strong>Environment</strong>, and based on the feedback it receives, it learns over time, the correct action to take at every state.</p>
+
+<div class="side-note">
+RL seems very intuitive, right? Isn't this how we, as children learnt things? This direction of thinking may lead us to believe that RL might be the way to achieve AGI. However, with <strong>General Intelligence</strong>, the agent should be able to keep learning new tasks, without forgetting the skills it has learnt and also use it's existing knowledge as prior to learn new tasks. But the framework of RL leads to the agent making the best decisions on the current environment, and we get an agent specialised at a particular task. 
+</div>
+
+<p>Let us try to formulate the problem mathematically.</p>
+
+<p><img src="http://localhost:4000/images/rl_intro/mdp.png" alt="MDP" title="MDP" /></p>
+
+<blockquote>
+  <p><strong>Assumption 1: Complete Observability</strong><br />
+The agent gets to observe the complete state. Fully observable enviroment means that <br />
+ Observation (\(O_t\)) = Agent State (\(S_t^a\)) = Environment State (\(S_t^e\)) = State (\(S_t\)).</p>
+</blockquote>
+
+<p><strong>History</strong><br />
+  Defined as the sequence of obervations, actions, rewards, \(H_t =  A_1, O_1, R_1,...., A_t, O_t, R_t\)</p>
+
+<div class="side-note">
+<strong> State </strong>: History determines what happpens next. But it is not a helpful representation as it can become too large. State is essentially a concise summary that captures all the information we need to determine what happens next. For example, State can be the last 4 observations.
+</div>
+
+<p><strong>State Function</strong><br />
+  The state at any time is a function of its history: \(S_t = f(H_t)\)</p>
+
+<blockquote>
+  <p><strong>Assumption 2: Markov Property</strong><br />
+The next state \(S'\) depends solely on the current state \(S\). This is called the <strong>Markov Property</strong>. In simple terms it means “future outcomes depends solely on the present state- it doesn’t matter how we got to this state.” <br />
+\begin{equation}
+  \mathbb{P}[S_{t+1} | S_t] = \mathbb{P}[S_{t+1} | S_1, S_2, …, S_t]
+\end{equation}</p>
+</blockquote>
+
+<ul>
+  <li>If considering the State as the Environment State \(S_t^e\), it is inherently Markov.</li>
+  <li>Viewing the State as the History \(H_t\) also conforms to Markov properties.</li>
+</ul>
+
+<p>When we work with these two assumptions, we call it a <strong>Markov Decision Process</strong></p>
+
+<blockquote>
+  <p>A <strong>Markov Decision Process</strong> is a tuple \(\langle \mathcal{S, A, P, R}, \gamma \rangle\)</p>
+  <ul>
+    <li>\(\mathcal{S}\) is a finite set of states</li>
+    <li>\(\mathcal{A}\) is a finite set of actions</li>
+    <li>\(\mathcal{P}\) is a state transition probability matrix,<br />
+\begin{equation}
+ \mathcal{P}(s’|s, a) = \mathbb{P}[S_{t+1} = s’ \mid S_t = s, A_t = a] 
+\end{equation}</li>
+    <li>\(\mathcal{R}\) is a reward function,  \(R\) is the reward
+\begin{equation} 
+\mathcal{R}(s,a) = \mathbb{E}[R_{t+1} \mid S_t = s, A_t = a] 
+\end{equation}</li>
+    <li>\(\gamma\) is a discount factor \(\gamma \in [0, 1]\)</li>
+  </ul>
+</blockquote>
+
+<p>There also exist partially observable markov decision processes (<strong>POMDPs</strong>) where the complete state of the system is not observable / the agent indirectly observes the environment. An example: The game of chess is an MDP, the state is completely observable, however, the a game of poker is a POMDP, where we do not know which cards the opponents have. In POMDPs, we don’t know the environment state. ( Agent State \(\neq\) Environment State). So in this case, the agent must construct its own representation of the state \(S_t^a\) e.g.,</p>
+<ul>
+  <li>Complete history: \(S_t^a = H_t\)</li>
+  <li>Beliefs of environment state: \(S_t^a = \left( P[S_t^e = s^1], \ldots, P[S_t^e = s^n] \right)\)</li>
+</ul>
+
+<h2 class="post-title">Policy, Value-Functions and The Bellman Equations</h2>
+
+<p>The <strong>return</strong> \(G_t\) is the total discounted reward from time-step \(t\).</p>
+
+\[G_t = R_{t+1} + \gamma R_{t+2} + \ldots = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}\]
+
+<ul>
+  <li>The value of receiving reward \(R\) after \(k + 1\) time-steps is \(\gamma^k R\).</li>
+  <li>\(\gamma \to 0\), implies we care about immediate reward and  \(\gamma \to 1\), implies we care are far-sighted</li>
+</ul>
+
+<p>A <strong>policy</strong> \(\pi\) is a distribution over actions given states,</p>
+
+\[\pi(a|s) = \mathbb{P}[A_t = a | S_t = s]\]
+
+<ul>
+  <li>A policy fully defines the behaviour of an agent</li>
+  <li>MDP policies depend on the current state (not the history)</li>
+  <li>i.e., Policies are <strong>stationary</strong> (time-independent), \(A_t \sim \pi( . \mid S_t), \forall t &gt; 0\)</li>
+</ul>
+
+<p>The <strong>state-value function</strong> \(V_{\pi}(s)\) for an MDP is the expected return starting from state  \(s\), and then following policy  \(\pi\):</p>
+
+\[V_{\pi}(s) = \mathbb{E}_{\pi}[G_t \mid S_t = s]\]
+
+<div class="side-note">
+<strong> Value of a State </strong>: From this state, if I take the best possible action at each subsequent step, what is the long-term reward I can expect?
+</div>
+
+<p>The <strong>action-value function</strong>  \(Q_{\pi}(s, a)\) is the expected return starting from state  \(s\), taking action  \(a\), and then following policy  \(\pi\):</p>
+
+\[Q_{\pi}(s, a) = \mathbb{E}_{\pi}[G_t \mid S_t = s, A_t = a]\]
+
+<p>The state-value function can again be decomposed into immediate reward plus discounted value of successor state,</p>
+
+\[V_{\pi}(s) = \mathbb{E}_{\pi}[R_{t+1} + \gamma G_{t+1} \mid S_t = s]\]
+
+<p>Since, \(\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X \mid Y]]\) ( from Law of total expectation)</p>
+
+\[V_{\pi}(s) = \mathbb{E}_{\pi}[R_{t+1} + \gamma \mathbb{E}_{\pi}[G_{t+1} \mid S_{t+1} = s'] \mid S_t = s]\]
+
+\[V_{\pi}(s) = \mathbb{E}_{\pi}[R_{t+1} + \gamma V_{\pi}(S_{t+1}) \mid S_t = s]\]
+
+\[V_{\pi}(s) =  \mathbb{E}_{\pi}[R_{t+1} \mid S_t = s] + \gamma \mathbb{E}_{\pi}[V_{\pi}(S_{t+1}) \mid S_t = s]\]
+
+\[V_{\pi}(s) =  \sum_{r' \in R} r' \mathbb{P}(R_{t+1} = r' \mid S_t = s) + \gamma \sum_{s' \in \mathcal{S}}V_{\pi}(S_{t+1} = s') \mathbb{P}(S_{t+1} = s' | S_t = s)\]
+
+\[V_{\pi}(s) =   \sum_{r' \in R} r' \sum_{a \in \mathcal{A}} \mathbb{P}(R_{t+1} = r', A_t= a | S_t=s) + \gamma \sum_{s' \in \mathcal{S}}V_{\pi}(S_{t+1} = s') \sum_{a \in \mathcal{A}}\mathbb{P}(S_{t+1} = s', A_t = a | S_t = s)\]
+
+\[V_{\pi}(s) = \sum_{a \in \mathcal{A}}  \sum_{r' \in R} r' \mathbb{P}(R_{t+1} = r' | S_t=s, A_t= a)\mathbb{P}[A_t = a | S_t = s] + \gamma \sum_{s' \in \mathcal{S}}V_{\pi}(S_{t+1} = s') \sum_{a \in \mathcal{A}}\mathbb{P}(S_{t+1} = s', A_t = a | S_t = s)\]
+
+\[V_{\pi}(s) = \sum_{a \in \mathcal{A}} \mathbb{E}_{\pi}[R_{t+1} \mid S_t = s, A_t = a]\mathbb{P}[A_t = a | S_t = s] + \gamma \sum_{a \in \mathcal{A}}\mathbb{P}[A_t = a | S_t = s]\sum_{s' \in \mathcal{S}}\mathbb{P}(S_{t+1} = s' | S_t = s, A_t = a)V_{\pi}(S_{t+1} = s')\]
+
+\[V_{\pi}(s) = \sum_{a \in \mathcal{A}} \mathcal{R}(s,a)\pi(a|s) + \gamma \sum_{a \in \mathcal{A}}\pi(a|s) \sum_{s' \in \mathcal{S}}\mathcal{P}(s' | s,a)V_{\pi}(s')\]
+
+<p>The action-value function can similarly be decomposed,</p>
+
+\[Q_{\pi}(s, a) = \mathbb{E}_{\pi}[R_{t+1} + \gamma Q_{\pi}(S_{t+1}, A_{t+1}) \mid S_t = s, A_t = a]\]
+
+<blockquote>
+  <p><strong>Bellman Equations</strong>
+\begin{equation}
+V_{\pi}(s) = \sum_{a \in \mathcal{A}}\pi(a|s) \overset{Q_{\pi}(s,a)}{\left(\mathcal{R}(s,a) + \gamma \sum_{s’ \in \mathcal{S}}\mathcal{P}(s’ | s,a )V_{\pi}(s’)\right)}
+ \end{equation}
+ \begin{equation}
+ Q_{\pi}(s,a) = \mathcal{R}(s,a) + \gamma\sum_{s’ \in S}\mathcal{P}(s’ |s,a) \sum_{a’ \in \mathcal{A}}\pi(a’|s’) Q_{\pi}(s’,a’)
+ \end{equation}</p>
+</blockquote>
+
+<p>The <strong>optimal state-value function</strong> \(V^* (s)\) is the maximum value function over all policies:</p>
+
+\[V^*(s) = \max_{\pi} V_{\pi}(s)\]
+
+<p>The <strong>optimal action-value function</strong> \(Q^*(s, a)\) is the maximum action-value function over all policies:</p>
+
+\[Q^*(s, a) = \max_{\pi} Q_{\pi}(s, a)\]
+
+<p>The <strong>Optimal Policy</strong> is given by:
+\(\pi^*(a|s) = 
+\begin{cases} 
+1 &amp; \text{if } a = \text{argmax}_{a \in A} Q^*(s, a) \\
+0 &amp; \text{otherwise} 
+\end{cases}\)</p>
+
+<p>We can write,</p>
+
+\[V^*(s) = \max_a Q^*(s, a)\]
+
+\[Q^*(s,a) = \mathcal{R}(s,a) + \gamma\sum_{s' \in S}\mathcal{P}(s' \mid s,a) V^*(s')\]
+
+<blockquote>
+  <p>The <strong>Bellman Optimality Equations</strong> are given by:</p>
+
+\[V^*(s) = \max_a \left( \mathcal{R}(s,a) + \gamma\sum_{s' \in S}\mathcal{P}(s' \mid s,a) V^*(s') \right)\]
+
+\[Q^* (s, a) = \mathcal{R}(s,a) + \gamma \sum_{s' \in S}\mathcal{P}(s'\mid s,a) \max_{a'} Q^* (s', a')\]
+</blockquote>
+
+<h2 class="post-title">Value Iteration and Policy Iteration</h2>
+
+<h2 id="algorithm-1-value-iteration">Algorithm 1: Value Iteration</h2>
+
+<ul>
+  <li><strong>Inputs:</strong> Reward Function \(\mathcal{R}(s,a)\), state transition probabilties \(\mathcal{P}(s' \mid s,a)\)</li>
+  <li><strong>Initialise</strong> \(V^{(0)}(s) = 0 \:\:\:\:\:\forall s \in S\)</li>
+  <li>
+    <p>While not converged, do:</p>
+
+    <ul>
+      <li>For \(s \in S\)</li>
+    </ul>
+
+\[V^{(t+1)}(s) \leftarrow \max_{a \in \mathcal{A}} \left( \mathcal{R}(s,a) +  \gamma\sum_{s' \in S} \mathcal{P}(s' \mid s,a) V^{(t)}(s') \right)\]
+
+\[t = t+1\]
+  </li>
+  <li>
+    <p><strong>Stopping:</strong> whenever \(V^{(t+1)}(s) = V^{(t)}(s)\), for all \(s\), we must have found \(V^*\)</p>
+  </li>
+  <li><strong>Policy:</strong></li>
+</ul>
+
+\[\pi^*(s) \leftarrow argmax_{a \in \mathcal{A}} \left( \mathcal{R}(s,a) +  \gamma\sum_{s' \in S} \mathcal{P}(s' \mid s,a) V^{(t)}(s') \right)\]
+
+<h2 id="algorithm-2-policy-iteration">Algorithm 2: Policy Iteration</h2>
+
+<ul>
+  <li><strong>Inputs:</strong> Reward Function \(\mathcal{R}(s,a)\), state transition probabilties \(\mathcal{P}(s' \mid s,a)\)</li>
+  <li><strong>Initialise</strong> \(\pi\) randomly</li>
+  <li>
+    <p>While not converged, do:</p>
+
+    <ul>
+      <li>Solve the Bellman Equations defined by policy \(\pi\)</li>
+    </ul>
+
+\[V^{\pi}(s) = \mathcal{R}(s,\pi(s)) +  \gamma\sum_{s' \in S} \mathcal{P}(s' \mid s, \pi(s)) V^{\pi}(s')\]
+
+    <ul>
+      <li>update \(\pi\)</li>
+    </ul>
+
+\[\pi(s) \leftarrow argmax_{a \in \mathcal{A}} \left( \mathcal{R}(s,a) + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}(s' \mid s,a)V^{\pi}(s') \right)\]
+  </li>
+  <li>Return \(\pi\)</li>
+</ul>
+
+
+  </main>
+
+  <footer class="post-footer">
+    <!-- Footer content -->
+  </footer>
+
+  <!-- Medium-style image zoom JavaScript and other scripts if necessary -->
+</body>
+
+</html></body>
+</html>

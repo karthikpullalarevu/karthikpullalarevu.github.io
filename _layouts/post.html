@@ -1,0 +1,36 @@
+---
+layout: page
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" type="text/css" href="{{ '/style.css' | prepend: site.baseurl }}">
+  <!-- Additional head elements -->
+</head>
+
+<body>
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <!-- You can include the author and publish date here if you like -->
+  </header>
+
+  <nav>
+    <!-- Navigation links -->
+  </nav>
+
+  <main class="post-content">
+    {{ content }}
+  </main>
+
+  <footer class="post-footer">
+    <!-- Footer content -->
+  </footer>
+
+  <!-- Medium-style image zoom JavaScript and other scripts if necessary -->
+</body>
+
+</html>

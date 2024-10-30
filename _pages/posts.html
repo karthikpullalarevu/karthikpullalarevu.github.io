@@ -1,0 +1,52 @@
+---
+layout: page
+permalink: /blog/
+title: Articles
+---
+
+<div class="post post-content">
+
+    <p>
+      This page contains all projects, notes, and random blogs that I have written. You can give suggestions for the website and the content <a href="{{site.url}}/feedback/"> here </a>
+    </p>
+    <ul class="post-list">
+  
+    
+      {%- assign postlist = site.posts -%}
+        
+  
+      {% for post in postlist %}
+      {% if post.cat == 'notes' %}
+      {% if post.external_source == blank %}
+        {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
+      {% else %}
+        {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
+      {% endif %}
+      {% assign year = post.date | date: "%Y" %}
+      {% assign tags = post.tags | join: "" %}
+      {% assign categories = post.categories | join: "" %}
+  
+      <li>
+  {%- if post.thumbnail -%}
+  <div class="row">
+            <div class="col-sm-9">
+  {%- endif -%}
+          <h3>
+            <a class="post-title2" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+       
+        </h3>
+        <p>{{ post.description }}</p>
+        <p class="post-meta">
+          {{ read_time }} min read &nbsp; &middot; &nbsp;
+          {{ post.date | date: '%B %-d, %Y' }}
+          {%- if post.external_source %}
+          &nbsp; &middot; &nbsp; {{ post.external_source }}
+          {%- endif %}
+        </p>
+        {%- endif %}
+      {% endfor %}
+    </ul>
+  
+  
+  
+  </div>

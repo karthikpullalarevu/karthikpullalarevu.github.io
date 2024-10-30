@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  
+    <!-- code for nav bar -->
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+          <a class="navbar-brand" href="http://localhost:4000">Sai Aneesh Suryadevara</a>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:4000">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="http://localhost:4000/blog">Notes</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+
+    <title>Sai Aneesh Suryadevara</title>
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+  <meta name="author" content="Sai Aneesh Suryadevara" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="shortcut icon" type="images/png" href="images/favicon.png">
+  <link rel="canonical" href="http://localhost:4000/blog/test">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+  <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+  
+</head>
+<body><!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Tensors</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <!-- Additional head elements -->
+</head>
+
+<body>
+  <header class="post-header">
+    <h1 class="post-title">Introduction to Tensors</h1>
+    <!-- You can include the author and publish date here if you like -->
+  </header>
+
+  <nav>
+    <!-- Navigation links -->
+  </nav>
+
+  <main class="post-content">
+    <script type="text/javascript" id="MathJax-script" defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+<p>The zeros of a function can give us a lot of information regarding the function. Why specifically zero? Division is in general more difficult to implement in comparison to multiplication. Division is implemented via the solution to roots of an equation in computers. There are other reasons such as eigenvalue decomposition. We shall see all of this later in the course.</p>
+
+<p><strong><em>Theorem.</em></strong> <em>Intermediate Value Theorem</em>. If \(f: [a, b] \to \mathbb R\) is a continuous function with \(f(a)\cdot f(b) &lt; 0\) then there is a \(c \in [a, b]\) such that \(f(x) = 0\).</p>
+
+<h3 id="bisection-method">Bisection method</h3>
+
+<p>The bisection method is implemented using the above theorem. To begin, we set \(a_1 = a\) and \(b_1 = b\), and let \(p_1\) be the midpoint of \([a, b]\);</p>
+
+<ul>
+  <li>If \(f(p_1) = 0\), then we are done</li>
+  <li>If \(f(p_1)f(a_1)&gt;0\), then the subinterval \([p_1, b_1]\) contains a root of \(f\), we then set \(a_2 = p_1\) and \(b_2 = b_1\)</li>
+  <li>If \(f(p_1)f(b_1)&gt;0\), then the subinterval \([a_1, p_1]\) contains a root of \(f\), we then set \(a_2 = a_1\) and \(b_2 = p_1\)</li>
+</ul>
+
+<p>We continue this process until we obtain the root. Each iteration reduces the size of the interval by half. Therefore, it is beneficial to choose a small interval in the beginning. The sequence of \(\{p_i\}\) is a Cauchy sequence. IT may happen that none of the \(p_i\) is a root. For instance, the root may be an irrational number and \(a_1, b_1\) may be rational numbers. There are three criteria to decide to stop the bisection process.</p>
+
+<ul>
+  <li>\(\|f(p_n)\| &lt; \epsilon\) - not very good because it may take a long time to achieve it, or that it may be achieved easily and yet \(p_n\) is significantly many steps away from a root of \(f\)</li>
+  <li>\(\|p_n - p_{n-1}\| &lt;\epsilon\) is not good because it does not take the function \(f\) into account. While \(p_n\) and \(p_{n-1}\) may be close enough but the actual root may still be many steps away.</li>
+  <li>\(p_n \neq 0 \text{ and } \frac{\|p_n - p_{n-1}\|}{\|p_n\|} &lt; \epsilon\) looks enticing as it mimics the relative error but again it does not take \(f\) into account.</li>
+</ul>
+
+  </main>
+
+  <footer class="post-footer">
+    <!-- Footer content -->
+  </footer>
+
+  <!-- Medium-style image zoom JavaScript and other scripts if necessary -->
+</body>
+
+</html></body>
+</html>

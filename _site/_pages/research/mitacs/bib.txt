@@ -1,0 +1,10 @@
+@ARTICLE{10239321,
+  author={Gondokaryono, Radian and Haiderbhai, Mustafa and Suryadevara, Sai Aneesh and Kahrs, Lueder A.},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Learning Nonprehensile Dynamic Manipulation: Sim2real Vision-based Policy with a Surgical Robot}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-8},
+  doi={10.1109/LRA.2023.3312038}}
+
