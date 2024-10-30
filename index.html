@@ -110,32 +110,30 @@ layout: page
       </script>
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" border="0">
     
-        <tr onmouseout="mitacs_stop()" onmouseover="mitacs_start()">
+        <tr onmouseout="plant_stop()" onmouseover="plant_stop()">
           <td style="padding:0px 0px;width:30%;vertical-align:middle;min-width:120px">
             
             <div class="one" style="width:100%; height:auto; max-width:100%">
-              <div class="two" id='_pages/research/mitacs/demo.jpg' style="width:100%; height:auto; max-width:100%">
-                <a href="https://medcvr.utm.utoronto.ca/ral2023-rollblock.html">
-                  <img src='_pages/research/mitacs/demo.jpg' style="width:100%; height:auto; max-width:100%">
+              <div class="two" id='_pages/research/plant/demo.png' style="width:100%; height:auto; max-width:100%">
+                <a href="https://link.springer.com/article/10.1007/s11042-021-11770-7#article-info">
+                  <img src='_pages/research/plant/demo.png' style="width:100%; height:auto; max-width:100%">
                 </a>
               </div>
               
-              <img src='_pages/research/mitacs/demo.gif' style="width:100%; height:auto; max-width:100%">
+              <!-- <img src='_pages/research/plant/demo.gif' style="width:100%; height:auto; max-width:100%"> -->
               
             </div>
             <script type="text/javascript">
-              function mitacs_start() {
-                document.getElementById('_pages/research/mitacs/demo.jpg').style.opacity = "0";
+              function plant_start() {
+                document.getElementById('_pages/research/plant/demo.png').style.opacity = "0";
               }
 
-              function mitacs_stop() {
-                document.getElementById('_pages/research/mitacs/demo.jpg').style.opacity = "1";
+              function plant_stop() {
+                document.getElementById('_pages/research/plant/demo.png').style.opacity = "1";
               }
               nlt_stop()
             </script>
-            <!-- 
-            <img src="_pages/research/mitacs/demo.jpg" onmouseover="src='_pages/research/mitacs/demo.gif'" onmouseout="src='_pages/research/mitacs/demo.jpg'" style="width:100%; height:auto; max-width:100%"/>
-             -->
+            
           </td>
           <td style="padding:20px 0px 20px 40px;width:70%;vertical-align:middle">
               <a href="https://link.springer.com/article/10.1007/s11042-021-11770-7#article-info"><h3>Semantic Segmentation for Plant Phenotyping using Advanced Deep Learning Pipelines.</h3></a><br>
