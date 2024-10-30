@@ -303,8 +303,9 @@ img {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a shadow for depth */
 }
 
+
 .news-container {
-  width: 110%; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
   margin-bottom: 20px; /* Adjust spacing with other elements */
 }
 
@@ -315,12 +316,36 @@ img {
   border-bottom: 2px solid #ccc; /* Line under the heading */
 }
 
-
 .news-scroll {
-  max-height: 150px; /* Set a height limit for scrolling */
-  overflow-y: auto;  /* Enable vertical scroll if content overflows */
+  max-height: 150px; /* Adjust height as needed */
+  overflow-y: auto;
+  margin-top: 10px; /* Add space between heading and scrollable content */
+  padding: 10px; /* Padding around the content */
+  box-sizing: border-box; /* Ensure padding is included in the width/height */
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+ul li .date {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px; /* Adjust width for consistent spacing */
+}
+
+ul li a {
+  color: #07889b; /* Theme color for links */
+  text-decoration: none; /* Removes underline from links */
+}
 
 
 
