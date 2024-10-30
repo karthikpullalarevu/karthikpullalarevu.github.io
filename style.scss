@@ -303,17 +303,55 @@ img {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a shadow for depth */
 }
 
+// .news-container {
+//   width: 110%; /* Adjust as needed */
+//   margin-bottom: 20px; /* Adjust spacing with other elements */
+// }
+
+// .news-container h2 {
+//   margin: 0;
+//   padding: 10px 0;
+//   font-size: 1.5em;
+//   border-bottom: 2px solid #ccc; /* Line under the heading */
+// }
+
 .news-container {
-  width: 110%; /* Adjust as needed */
-  margin-bottom: 20px; /* Adjust spacing with other elements */
+  margin: 20px;
 }
 
 .news-container h2 {
-  margin: 0;
-  padding: 10px 0;
-  font-size: 1.5em;
-  border-bottom: 2px solid #ccc; /* Line under the heading */
+  font-size: 24px;
+  margin-bottom: 10px;
 }
+
+// .news-scroll {
+//   max-height: 150px; /* Set a height limit for scrolling */
+//   overflow-y: auto;  /* Enable vertical scroll if content overflows */
+// }
+
+ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;           /* Remove default padding */
+}
+
+li {
+  margin-bottom: 15px; /* Space between news items */
+  position: relative;   /* Enable absolute positioning for date */
+}
+
+.date {
+  position: absolute;  /* Absolute positioning */
+  left: 0;            /* Align to the left */
+  width: 100px;       /* Fixed width for date */
+  font-weight: bold;  /* Make date bold */
+}
+
+li::after {
+  content: '';        /* Clearfix */
+  display: block;
+  clear: both;       /* Ensures proper layout */
+}
+
 
 .news-scroll {
   max-height: 150px; /* Adjust height as needed */
