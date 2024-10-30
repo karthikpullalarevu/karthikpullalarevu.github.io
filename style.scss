@@ -362,26 +362,27 @@ li::after {
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;           /* Remove default padding */
 }
 
-ul li {
-  margin-bottom: 10px;
-  font-size: 1em;
-  line-height: 1.5;
+li {
+  margin-bottom: 15px; /* Space between news items */
+  position: relative;   /* Enable absolute positioning for date */
+  padding-left: 120px; /* Add padding to the left for text */
 }
 
-ul li .date {
-  font-weight: bold;
-  display: inline-block;
-  width: 100px; /* Adjust width for consistent spacing */
+.date {
+  position: absolute;  /* Absolute positioning */
+  left: 0;            /* Align to the left */
+  width: 100px;       /* Fixed width for date */
+  font-weight: bold;  /* Make date bold */
 }
 
-ul li a {
-  color: #07889b; /* Theme color for links */
-  text-decoration: none; /* Removes underline from links */
+li::after {
+  content: '';        /* Clearfix */
+  display: block;
+  clear: both;       /* Ensures proper layout */
 }
 
 
