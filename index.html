@@ -288,7 +288,7 @@ layout: page
         
         
 
-        <tr onmouseout="mrpp_stop()" onmouseover="mrpp_start()">
+        <tr onmouseout="mayo_stop()" onmouseover="mayo_start()">
           <td style="padding:0px 0px;width:30%;vertical-align:middle;min-width:120px">
             
             <div class="one" style="width:100%; height:auto; max-width:100%">
@@ -298,28 +298,26 @@ layout: page
                 </a>
               </div>
               
-              <img src='_pages/research/mrpp/mrpp.gif' style="width:100%; height:auto; max-width:100%">
+              <img src='_pages/research/mayo/demo1.png' style="width:100%; height:auto; max-width:100%">
               
             </div>
             <script type="text/javascript">
-              function mrpp_start() {
+              function mayo_start() {
                 document.getElementById('').style.opacity = "0";
               }
 
-              function mrpp_stop() {
+              function mayo_stop() {
                 document.getElementById('').style.opacity = "1";
               }
-              nlt_stop()
+              mayo_stop()
             </script>
-            <!-- 
-            <img src="" onmouseover="src='_pages/research/mrpp/mrpp.gif'" onmouseout="src=''" style="width:auto; height:auto; max-width:100%"/>
-             -->
+            
           </td>
           <td style="padding:0px 0px 0px 40px;width:70%;vertical-align:middle">
-            <h3>Decentralized Multi-Agent Patrolling using Q-Learning</h3>
+            <h3>COVID-19 Severity classification using Tracheal density</h3>
             
             <br>
-            <em>Guides&#58 <a href= "https://sites.google.com/iitb.ac.in/arpitasinha">Prof. Arpita Sinha </a> and <a href ="https://www.sc.iitb.ac.in/~leena/">Prof. Leena Vachhani</a></em>
+            <em>Guides&#58 <a href= "https://pubmed.ncbi.nlm.nih.gov/?term=Rajagopalan+S&cauthor_id=30050769">Dr. Srinivasan Rajagopalan </a> and <a href ="https://www.linkedin.com/in/susan-elias/">Dr. Susan Elias</a></em>
             
             <br>
             
@@ -328,7 +326,8 @@ layout: page
             
             
             <p>
-              In this work, we wish to find an optimal patrolling strategy in a multi-agent setting with the constraint of minimum information sharing. Developed patrolling techniques and analyzed their performance using ROS, TraCI and SUMO simulator
+              In this work, we wish to classify severity of Covid infection using Chest CT scans. Used a dataset of 600+ covid patients CT volumes to extract relevant regions of the trachea using airway extractor
+              module in Slicer 3D software. Applied feature engineering techniques (Lasso, Boruta) to 140 tracheal density features and compared performance across ML & DL models to quantify tracheal infection. 
             </p>
             <br><br>
           </td>
