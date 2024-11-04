@@ -1,0 +1,10 @@
+@ARTICLE{
+  author={Karthik Pullalarevu, Mansi Parashar, Sofana Reka S, Kumar T Rajamani, Mattias P. Heinrich},
+  journal={Multimedia Tools and Applications, Springer}, 
+  title={Semantic Segmentation for Plant Phenotyping using Advanced Deep Learning Pipelines.}, 
+  year={2022},
+  volume={81},
+  number={},
+  pages={4535–4547},
+  doi={10.1007/s11042-021-11770-7}}
+
