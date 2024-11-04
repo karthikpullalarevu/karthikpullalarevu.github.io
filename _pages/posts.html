@@ -1,0 +1,43 @@
+---
+layout: page
+permalink: /blog/
+title: Articles
+---
+
+<div class="post post-content">
+
+  <p>
+    This page contains all notes, and random blogs that I have written.
+  </p>
+
+    <ul class="post-list">
+        {%- assign postlist = site.posts -%}
+        {% for post in postlist %}
+        {% if post.cat == 'notes' %}
+        <li class="post-item">
+            <h3>
+                {%- if post.external_source == "Medium" -%}
+                    <a class="post-title2" href="{{ post.medium_url }}" target="_blank">
+                        {{ post.title }} 
+                        <span class="external-indicator">↗</span>
+                    </a>
+                {%- else -%}
+                    <a class="post-title2" href="{{ site.baseurl }}{{ post.url }}">
+                        {{ post.title }}
+                    </a>
+                {%- endif -%}
+            </h3>
+            
+            <p>{{ post.description }}</p>
+            <p class="post-meta">
+                {{ post.date | date: '%B %-d, %Y' }}
+                {% if post.external_source %}
+                    &nbsp; &middot; &nbsp; 
+                    <span class="external-source">{{ post.external_source }}</span>
+                {% endif %}
+            </p>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>

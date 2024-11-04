@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ page.title }} - Redirecting to Medium</title>
+    <link rel="canonical" href="{{ page.medium_url }}"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="refresh" content="0;url={{ page.medium_url }}" />
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .redirect-message {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .redirect-link {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .redirect-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-message">
+        <h1>Redirecting to Medium...</h1>
+        <p>You are being redirected to the article on Medium. If you are not redirected automatically, 
+        <a class="redirect-link" href="{{ page.medium_url }}">click here</a>.</p>
+    </div>
+    <script>location='{{ page.medium_url }}'</script>
+</body>
+</html>
