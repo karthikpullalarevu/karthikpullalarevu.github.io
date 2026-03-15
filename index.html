@@ -130,9 +130,41 @@ layout: page
               }
           }
       }
+      function toggleabs(paperid)
+      {
+          var paper = document.getElementById(paperid) ;
+          var abs = paper.getElementsByClassName('abstract-content') ;
+          if (abs.length > 0) {
+              if (abs[0].style.display == 'none' || abs[0].style.display === '') {
+                  abs[0].style.display = 'block' ;
+              } else {
+                  abs[0].style.display = 'none' ;
+              }
+          }
+      }
       </script>
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;" border="0">
     
+        <tr>
+          <td style="padding:0px 0px;width:30%;vertical-align:middle;min-width:120px">
+            <img src='_pages/research/wiggle/teaser.png' style="width:100%; height:auto; max-width:100%" alt="Wiggle and Go!">
+          </td>
+          <td style="padding:20px 0px 20px 40px;width:70%;vertical-align:middle">
+            <span style="display:inline-block;background:#2dd4bf;color:#134e4a;padding:2px 8px;border-radius:4px;font-size:0.85em;margin-bottom:6px;">paper</span><br>
+            <h3>Wiggle and Go! System Identification for Zero-Shot Dynamic Rope Manipulation</h3><br>
+            Abhinav Mahajan, Arindam Sarkar, and Prakash Mandayam Comar
+            <br>
+            <em>2026 — Under Review</em>
+            <br><br>
+            <button type="button" onclick="toggleabs('wiggle')" style="cursor:pointer;padding:4px 12px;border:1px solid #fff;background:transparent;color:inherit;font-size:0.9em;">ABS</button>
+            <div class="paper" id="wiggle">
+              <div class="abstract-content" style="display:none;margin-top:10px;padding:12px;border:1px dashed rgba(255,255,255,0.5);border-radius:4px;font-size:0.95em;line-height:1.5;">
+                Many robotic tasks are unforgiving; a single mistake in a dynamic throw can lead to unacceptable delays or unrecoverable failure. To mitigate this, we present a novel approach that leverages learned simulation priors to inform goal-conditioned dynamic manipulation of ropes for efficient and accurate task execution. Related methods for dynamic rope manipulation either require large real-world datasets to estimate rope behavior or the use of iterative improvements on attempts at the task for goal completion. We introduce Wiggle and Go!, a system-identification, two-stage framework that enables zero-shot task rope manipulation. The framework consists of a system identification module that observes rope movement to predict descriptive physical parameters, which then informs an optimization method for goal-conditioned action prediction for the robot to execute zero-shot in the real. Our method achieves strong performance across multiple dynamic manipulation tasks enabled by the same task-agnostic system identification module which offers seamless switching between different manipulation tasks, allowing a single model to support a diverse array of manipulation policies. We achieve a 3.55 cm average accuracy on 3D target striking in real using rope system parameters in comparison to 15.34 cm accuracy when our task model is not system-parameter-informed. We achieve a Pearson correlation coefficient of 0.95 between Fourier frequencies of the predicted and real ropes on an unseen trajectory.
+              </div>
+            </div>
+          </td>
+        </tr>
+
         <tr onmouseout="plant_stop()" onmouseover="plant_stop()">
           <td style="padding:0px 0px;width:30%;vertical-align:middle;min-width:120px">
             
